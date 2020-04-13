@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import '../components/drum_pad.dart';
 
-class GbeduScreen extends StatelessWidget {
+class GbeduScreen extends StatefulWidget {
+  @override
+  _GbeduScreenState createState() => _GbeduScreenState();
+}
+
+class _GbeduScreenState extends State<GbeduScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
