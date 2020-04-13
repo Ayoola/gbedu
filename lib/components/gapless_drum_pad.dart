@@ -1,35 +1,33 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
+import 'package:gapless_audio_loop/gapless_audio_loop.dart';
 
-class DrumPad extends StatefulWidget {
+class GaplessDrumPad extends StatefulWidget {
   final Color drumPadColor;
   final String drumPadLabel;
   final String drumPadSound;
 
-  DrumPad({this.drumPadColor, this.drumPadLabel, this.drumPadSound});
+  GaplessDrumPad({this.drumPadColor, this.drumPadLabel, this.drumPadSound});
 
   @override
-  _DrumPadState createState() => _DrumPadState();
+  _GaplessDrumPadState createState() => _GaplessDrumPadState();
 }
 
-class _DrumPadState extends State<DrumPad> {
-  final player = AudioCache();
+class _GaplessDrumPadState extends State<GaplessDrumPad> {
+  GaplessAudioLoop player;
   bool isActive = false;
-  AudioPlayer audioPlayer;
 
-  Future<void> playSound() async {
-    AudioPlayer audioPlayer = await player.play(widget.drumPadSound, mode: PlayerMode.LOW_LATENCY);
-    this.audioPlayer = audioPlayer;
+  Future<void> loadDrumPadSound() async {
+    this.player = GaplessAudioLoop();
+    await player.loadAsset(widget.drumPadSound);
   }
 
   Future<void> loopSound() async {
-    AudioPlayer audioPlayer = await player.loop(widget.drumPadSound, mode: PlayerMode.LOW_LATENCY);
-    this.audioPlayer = audioPlayer;
+    await loadDrumPadSound();
+    await player.play();
   }
 
-  void stopSound() {
-    audioPlayer.stop();
+  Future<void> stopSound() async {
+    await player.stop();
   }
 
   void toggleDrumPad() {

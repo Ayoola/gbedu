@@ -12,6 +12,7 @@ dependencies:
 
   cupertino_icons: ^0.1.3
   audioplayers: ^0.15.0
+  gapless_audio_loop: ^1.1.0
 
 dev_dependencies:
   flutter_test:
