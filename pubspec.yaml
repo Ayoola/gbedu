@@ -22,4 +22,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/bass/
+    - assets/beat/
+    - assets/fx/
+    - assets/perc/
+    - assets/synth/
+    - assets/vox/

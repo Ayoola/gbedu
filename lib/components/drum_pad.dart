@@ -19,12 +19,12 @@ class _DrumPadState extends State<DrumPad> {
   AudioPlayer audioPlayer;
 
   void playSound() async {
-    AudioPlayer audioPlayer = await player.play(widget.drumPadSound);
+    AudioPlayer audioPlayer = await player.play(widget.drumPadSound, mode: PlayerMode.LOW_LATENCY);
     this.audioPlayer = audioPlayer;
   }
 
   void loopSound() async {
-    AudioPlayer audioPlayer = await player.loop(widget.drumPadSound);
+    AudioPlayer audioPlayer = await player.loop(widget.drumPadSound, mode: PlayerMode.LOW_LATENCY);
     this.audioPlayer = audioPlayer;
   }
 
@@ -55,6 +55,7 @@ class _DrumPadState extends State<DrumPad> {
         child: Opacity(
           opacity: isActive ? 1.0 : 0.5,
           child: Material(
+            elevation: isActive ? 0.0 : 5.0,
             borderRadius: BorderRadius.circular(5.0),
             color: widget.drumPadColor,
             child: Center(
