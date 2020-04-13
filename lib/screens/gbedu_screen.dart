@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/drum_pad.dart';
 import 'package:gbedu/components/gapless_drum_pad.dart';
 
 class GbeduScreen extends StatefulWidget {
@@ -19,8 +18,8 @@ class _GbeduScreenState extends State<GbeduScreen> {
             Expanded(
               child: Row(
                 children: <Widget>[
-                  GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat1', drumPadSound: 'beat/beat1.wav'),
-                  GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat2', drumPadSound: 'beat/beat2.wav'),
+                  GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat1.wav'),
+                  GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat2.wav'),
                   GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat3.wav'),
                   GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat4.wav'),
                 ],
