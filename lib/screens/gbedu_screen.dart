@@ -18,7 +18,7 @@ class _GbeduScreenState extends State<GbeduScreen> {
             Expanded(
               child: Row(
                 children: <Widget>[
-                  GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat1.wav'),
+                  GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat2.wav'),
                   GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat2.wav'),
                   GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat3.wav'),
                   GaplessDrumPad(drumPadColor: Colors.red, drumPadLabel: 'Beat', drumPadSound: 'beat/beat4.wav'),
