@@ -7,8 +7,8 @@ Gbedu is an app that allows anyone to create afrobeats on their mobile device.
 
 ## 🔔 Prerequisites
 Before you begin, ensure you have met the following requirements:
-* Installed Flutter SDK on MacOS X, Linux, Windows (https://flutter.dev/docs/get-started/install)
-* Installed one of the following Code editors Android Studio (recommended), VSCode, IntelliJ.
+* Installed Flutter SDK on MacOS X, Linux, or Windows (https://flutter.dev/docs/get-started/install)
+* Installed one of the following Code editors Android Studio (recommended), VSCode, or IntelliJ.
 * Installed Flutter and Dart Plugins (https://flutter.dev/docs/get-started/editor)
 
 ## 🎛 Contributing to Gbedu
@@ -19,4 +19,4 @@ To contribute to Gbedu, follow these steps:
 4. Push to the original branch: `git push origin <project_name>/<location>`
 5. Create the pull request.
 
-Alternatively see the GitHub documentation on creating a pull request.
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
