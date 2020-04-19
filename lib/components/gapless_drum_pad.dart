@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gapless_audio_loop/gapless_audio_loop.dart';
+import 'package:gbedu/metronome.dart';
 
 class GaplessDrumPad extends StatefulWidget {
   final Color drumPadColor;
@@ -13,6 +14,7 @@ class GaplessDrumPad extends StatefulWidget {
 }
 
 class _GaplessDrumPadState extends State<GaplessDrumPad> {
+  Metronome metronome = Metronome();
   GaplessAudioLoop player;
   bool isActive = false;
 
@@ -23,7 +25,10 @@ class _GaplessDrumPadState extends State<GaplessDrumPad> {
 
   Future<void> loopSound() async {
     await loadDrumPadSound();
-    await player.play();
+    if (metronome.getCurrentBeat() == 1) {
+      await player.play();
+    } else
+      loopSound();
   }
 
   Future<void> stopSound() async {
@@ -37,6 +42,8 @@ class _GaplessDrumPadState extends State<GaplessDrumPad> {
   @override
   void initState() {
     super.initState();
+    metronome.setBeatsPerMinute(100); //TODO pass in dynamic BPM from widget builder
+    metronome.loopBeatTime();
   }
 
   @override
