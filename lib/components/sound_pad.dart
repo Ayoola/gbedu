@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gbedu/gbedu_player.dart';
 import 'package:gbedu/metronome.dart';
+import 'package:loading/loading.dart';
+import 'package:loading/indicator/line_scale_indicator.dart';
 
 class SoundPad extends StatefulWidget {
   final Color color = Colors.black;
@@ -18,6 +20,7 @@ class _SoundPadState extends State<SoundPad> {
   Metronome metronome = Metronome();
   GbeduPlayer gbeduPlayer = GbeduPlayer();
   bool isActive = false;
+  bool isSyncingWithMetronome = false;
 
   void initializeSoundPad() {
     gbeduPlayer.loadGbeduPlayerSound(widget.sound);
@@ -31,8 +34,13 @@ class _SoundPadState extends State<SoundPad> {
 
   void loopSound() async {
     activateSoundPad();
+    showSyncingIndicator();
     await gbeduPlayer.loadSoundLooper();
-    metronome.isOnBeat() ? await gbeduPlayer.loopSound() : loopSound();
+    if (metronome.isOnBeat()) {
+      await gbeduPlayer.loopSound();
+      hideSyncingIndicator();
+    } else
+      loopSound();
   }
 
   void stopSoundLoop() async {
@@ -46,6 +54,18 @@ class _SoundPadState extends State<SoundPad> {
 
   void activateSoundPad() {
     setState(() => this.isActive = true);
+  }
+
+  void showSyncingIndicator() {
+    setState(() => this.isSyncingWithMetronome = true);
+  }
+
+  void hideSyncingIndicator() {
+    setState(() => this.isSyncingWithMetronome = false);
+  }
+
+  Widget buildSyncingIndicator() {
+    return Loading(indicator: LineScaleIndicator(), size: 30.0, color: Colors.white);
   }
 
   @override
@@ -68,7 +88,7 @@ class _SoundPadState extends State<SoundPad> {
             borderRadius: BorderRadius.circular(5.0),
             color: widget.color,
             child: Center(
-              child: Text(widget.label),
+              child: isSyncingWithMetronome ? buildSyncingIndicator() : Text(widget.label),
             ),
           ),
         ),
