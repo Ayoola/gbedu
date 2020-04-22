@@ -15,4 +15,8 @@ class Metronome {
       this._currentBeat < 8 ? print(this._currentBeat++) : this._currentBeat = 1;
     });
   }
+
+  bool isOnBeat() {
+    return (this.getCurrentBeat() == 1) ? true : false;
+  }
 }
