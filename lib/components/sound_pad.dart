@@ -33,10 +33,10 @@ class _SoundPadState extends State<SoundPad> {
   }
 
   void loopSound() async {
-    activateSoundPad();
     showSyncingIndicator();
     await gbeduPlayer.loadSoundLooper();
     if (metronome.isOnBeat()) {
+      activateSoundPad();
       await gbeduPlayer.loopSound();
       hideSyncingIndicator();
     } else
@@ -48,12 +48,12 @@ class _SoundPadState extends State<SoundPad> {
     await gbeduPlayer.stopSoundLoop();
   }
 
-  void deactivateSoundPad() {
-    setState(() => this.isActive = false);
-  }
-
   void activateSoundPad() {
     setState(() => this.isActive = true);
+  }
+
+  void deactivateSoundPad() {
+    setState(() => this.isActive = false);
   }
 
   void showSyncingIndicator() {
