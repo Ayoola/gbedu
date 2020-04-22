@@ -4,7 +4,6 @@ class Metronome {
   int _beatsPerMinute;
   int _currentBeat = 1;
 
-  int getCurrentBeat() => this._currentBeat;
   void setBeatsPerMinute(int bpm) => this._beatsPerMinute = bpm;
 
   void loopBeatTime() {
@@ -17,6 +16,6 @@ class Metronome {
   }
 
   bool isOnBeat() {
-    return (this.getCurrentBeat() == 1) ? true : false;
+    return (this._currentBeat == 1) ? true : false;
   }
 }

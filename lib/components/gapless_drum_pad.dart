@@ -25,10 +25,7 @@ class _GaplessDrumPadState extends State<GaplessDrumPad> {
 
   Future<void> loopSound() async {
     await loadDrumPadSound();
-    if (metronome.getCurrentBeat() == 1) {
-      await player.play();
-    } else
-      loopSound();
+    metronome.isOnBeat() ? await player.play() : loopSound();
   }
 
   Future<void> stopSound() async {

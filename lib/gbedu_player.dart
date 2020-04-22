@@ -3,31 +3,31 @@ import 'package:gapless_audio_loop/gapless_audio_loop.dart';
 import 'package:audioplayers/audio_cache.dart';
 
 class GbeduPlayer {
-  String drumPadSound;
-  GaplessAudioLoop soundLooper;
-  AudioCache soundPlayer = AudioCache();
-  AudioPlayer soundPlayerController;
+  String _sound;
+  GaplessAudioLoop _soundLooper;
+  AudioCache _soundPlayer = AudioCache();
+  AudioPlayer _soundPlayerController;
 
-  GbeduPlayer(this.drumPadSound);
+  void loadGbeduPlayerSound(String sound) => this._sound = sound;
 
   Future<void> playSound() async {
-    this.soundPlayerController = await soundPlayer.play(this.drumPadSound, mode: PlayerMode.LOW_LATENCY);
+    this._soundPlayerController = await _soundPlayer.play(this._sound, mode: PlayerMode.LOW_LATENCY);
   }
 
   Future<void> stopSound() async {
-    await this.soundPlayerController.stop();
+    await this._soundPlayerController.stop();
   }
 
   Future<void> loadSoundLooper() async {
-    this.soundLooper = GaplessAudioLoop();
-    await this.soundLooper.loadAsset(this.drumPadSound);
+    this._soundLooper = GaplessAudioLoop();
+    await this._soundLooper.loadAsset(this._sound);
   }
 
   Future<void> loopSound() async {
-    await soundLooper.play();
+    await _soundLooper.play();
   }
 
   Future<void> stopSoundLoop() async {
-    await soundLooper.stop();
+    await _soundLooper.stop();
   }
 }
